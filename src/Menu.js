@@ -5,7 +5,12 @@ import Directchat from './Directchat';
 import { General } from './UI/genral';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import { Topnavigate } from './LayoutOption/Topnavigate';
+import Topnavigate from './LayoutOption/Topnavigate';
+import Topnav from './LayoutOption/Topnav';
+import Boxed from './LayoutOption/Boxed';
+import Fixedbar from './LayoutOption/Fixedbar';
+import Chart from './charts/Chart';
+
 
 
 
@@ -16,6 +21,12 @@ import { Topnavigate } from './LayoutOption/Topnavigate';
 
 export default function Menu() {
     const [heighlight, setHeighlight] = useState("")
+
+
+    function refreshPage() {
+        window.location.reload(false);
+    }
+
 
     return (
         <div>
@@ -46,12 +57,18 @@ export default function Menu() {
                     {/* SidebarSearch Form */}
                     <div className="form-inline">
                         <div className="input-group" data-widget="sidebar-search">
+
                             <input className="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" />
+
                             <div className="input-group-append">
+
                                 <button className="btn btn-sidebar">
+
                                     <i className="fas fa-search fa-fw" />
                                 </button>
+
                             </div>
+
                         </div>
                     </div>
                     {/* Sidebar Menu */}
@@ -63,7 +80,7 @@ export default function Menu() {
                                 <li className="nav-item"  >
                                     <a href="#" className="nav-link">
                                         <i className="nav-icon fas fa-chart-pie" />
-                                        <p style={{ position: "relative", left: "5px", }}>
+                                        <p style={{ position: "relative", left: "5px", }} >
                                             Dashboard </p>
                                         <i className="right fas fa-angle-left" />
 
@@ -85,7 +102,7 @@ export default function Menu() {
                             </Link>
 
 
-                            <Link to="/General">
+                            {/* <Link to="/General">
                                 <li className="nav-item" active>
                                     <a href="#" className="nav-link">
                                         <i className="nav-icon fas fa-chart-pie" />
@@ -95,7 +112,7 @@ export default function Menu() {
 
                                     </a>
                                 </li>
-                            </Link>
+                            </Link> */}
 
 
                             <Dropdown>
@@ -106,6 +123,7 @@ export default function Menu() {
                                             bottom: "17px",
                                             left: "8px"
                                         }}>
+
 
 
 
@@ -132,26 +150,31 @@ export default function Menu() {
                                             </a>
                                         </li>
                                     </Dropdown.Toggle>
-                                    <Dropdown.Menu variant="dark">
+                                    <Dropdown.Menu variant="dark" style={{
+
+                                        backgroundColor: "#343a40",
+                                    }}>
 
                                         <ul class="nav nav-treeview" style={{
                                             display: "block",
-                                            backgroundColor: "#343a40",
+                                            backgroundColor: "#",
                                         }}>
                                             <Dropdown.Item href="#/" active>
-                                                <li class="nav-item">
-                                                    <a href="layout/top-nav.html" class="nav-link">
-                                                        <i class="far fa-circle nav-icon"></i>
-                                                        <p>Top Navigation</p>
-                                                    </a>
-                                                </li>
+                                                <Link to="/Topnav" >
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            <i class="far fa-circle nav-icon"></i>
+                                                            <p>Top Navigation</p>
+                                                        </a>
+                                                    </li>
+                                                </Link>
                                             </Dropdown.Item>
 
 
                                             <Dropdown.Item href="#">
                                                 <Link to="/Topnavigate" >
                                                     <li class="nav-item">
-                                                        <a href="layout/top-nav-sidebar.html" class="nav-link">
+                                                        <a href="#" class="nav-link">
                                                             <i class="far fa-circle nav-icon"></i>
                                                             <p>Top Navigation + Sidebar</p>
                                                         </a>
@@ -159,28 +182,34 @@ export default function Menu() {
                                                 </Link>
                                             </Dropdown.Item>
                                             <Dropdown.Item href="#">
-                                                <li class="nav-item">
-                                                    <a href="layout/boxed.html" class="nav-link">
-                                                        <i class="far fa-circle nav-icon"></i>
-                                                        <p>Boxed</p>
-                                                    </a>
-                                                </li>
+                                                <Link to="/Boxed">
+                                                    <li class="nav-item">
+                                                        <a href="#" class="nav-link">
+                                                            <i class="far fa-circle nav-icon"></i>
+                                                            <p>Boxed</p>
+                                                        </a>
+                                                    </li>
+                                                </Link>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-3">
-                                                <li class="nav-item">
-                                                    <a href="layout/fixed-sidebar.html" class="nav-link">
-                                                        <i class="far fa-circle nav-icon"></i>
-                                                        <p>Fixed Sidebar</p>
-                                                    </a>
-                                                </li>
+                                            <Dropdown.Item href="#">
+                                                <Link to="/Fixedbar">
+                                                    <li class="nav-item">
+                                                        <a href="layout/fixed-sidebar.html" class="nav-link">
+                                                            <i class="far fa-circle nav-icon"></i>
+                                                            <p>Fixed Sidebar</p>
+                                                        </a>
+                                                    </li>
+                                                </Link>
                                             </Dropdown.Item>
-                                            <Dropdown.Item href="#/action-3">
-                                                <li class="nav-item">
-                                                    <a href="layout/fixed-sidebar-custom.html" class="nav-link">
-                                                        <i class="far fa-circle nav-icon"></i>
-                                                        <p>Fixed Sidebar <small>+ Custom Area</small></p>
-                                                    </a>
-                                                </li>
+                                            <Dropdown.Item href="#">
+                                                <Link to="/Fixedsidebar">
+                                                    <li class="nav-item">
+                                                        <a href="layout/fixed-sidebar-custom.html" class="nav-link">
+                                                            <i class="far fa-circle nav-icon"></i>
+                                                            <p>Fixed Sidebar <small>+ Custom Area</small></p>
+                                                        </a>
+                                                    </li>
+                                                </Link>
                                             </Dropdown.Item>
                                             <Dropdown.Divider />
                                             <Dropdown.Item href="#/action-3">
@@ -264,101 +293,172 @@ export default function Menu() {
          with font-awesome or any other icon font library */}
 
 
+                                    <Dropdown>
 
-                                    <li className="nav-item">
-                                        <a href="#" className="nav-link">
-                                            <i className="nav-icon fas fa-chart-pie" />
-                                            <p>
-                                                Charts
-                                                <i className="right fas fa-angle-left" />
-                                            </p>
-                                        </a>
-                                        <ul className="nav nav-treeview">
-                                            <li className="nav-item">
-                                                <a href="pages/charts/chartjs.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>ChartJS</p>
+
+                                        <li className="nav-item" active>
+
+                                            <Dropdown.Toggle id="" variant="">
+                                                <li class="nav-item" style={{
+                                                    position: "absolute",
+                                                    bottom: "-5px",
+                                                    left: "-70px"
+                                                }}>
+                                                    <a href="#" className="nav-link">
+                                                        <i className="nav-icon fas fa-chart-pie" />
+                                                        <p style={{
+                                                            position: "relative",
+                                                            left: "7px"
+                                                        }}>
+                                                            Charts
+                                                            <i className="right fas fa-angle-left" style={{
+                                                                position: "relative",
+                                                                right: "-130px",
+                                                                top: "-1px",
+                                                            }} />
+                                                        </p>
+                                                    </a>
+                                                </li>
+                                            </Dropdown.Toggle>
+                                            <Dropdown.Menu variant="dark" style={{
+
+                                                backgroundColor: "#343a40",
+                                            }}>
+                                                <ul className="nav nav-treeview" style={{
+                                                    display: "block",
+                                                    backgroundColor: "#",
+                                                }}>
+                                                    <Dropdown.Item href="#">
+                                                        <Link to="/Chart">
+                                                            <li className="nav-item">
+                                                                <a href="pages/charts/chartjs.html" className="nav-link">
+                                                                    <i className="far fa-circle nav-icon" />
+                                                                    <p>ChartJS</p>
+                                                                </a>
+                                                            </li>
+                                                        </Link>
+                                                    </Dropdown.Item>
+
+                                                    <Dropdown.Item href="#">
+                                                        <Link to="/Flot">
+                                                            <li className="nav-item">
+                                                                <a href="pages/charts/flot.html" className="nav-link">
+                                                                    <i className="far fa-circle nav-icon" />
+                                                                    <p>Flot</p>
+                                                                </a>
+                                                            </li>
+                                                        </Link>
+                                                    </Dropdown.Item>
+
+                                                    <Dropdown.Item href="#">
+                                                        <li className="nav-item">
+                                                            <a href="pages/charts/inline.html" className="nav-link">
+                                                                <i className="far fa-circle nav-icon" />
+                                                                <p>Inline</p>
+                                                            </a>
+                                                        </li>
+                                                    </Dropdown.Item>
+                                                    <Dropdown.Item href="#">
+                                                        <li className="nav-item">
+                                                            <a href="pages/charts/uplot.html" className="nav-link">
+                                                                <i className="far fa-circle nav-icon" />
+                                                                <p>uPlot</p>
+                                                            </a>
+                                                        </li>
+                                                    </Dropdown.Item>
+                                                </ul>
+                                            </Dropdown.Menu>
+                                        </li>
+                                    </Dropdown>
+                                    <Dropdown>
+                                        <li class="nav-item" active ></li>
+                                        <Dropdown.Toggle id="" variant="">
+                                            <li class="nav-item" style={{
+                                                position: "absolute",
+                                                bottom: "-5px",
+                                                left: "-52px"
+                                            }}>
+                                                <a href="#" className="nav-link">
+                                                    <i className="nav-icon fas fa-tree" />
+                                                    <p style={{
+                                                        position: "relative",
+                                                        left: "7px"
+                                                    }}>
+                                                        UI Elements
+                                                        <i className="fas fa-angle-left right" style={{
+                                                            position: "relative",
+                                                            right: "-97px",
+                                                            top: "-1px",
+                                                        }} />
+                                                    </p>
                                                 </a>
                                             </li>
-                                            <li className="nav-item">
-                                                <a href="pages/charts/flot.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Flot</p>
-                                                </a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a href="pages/charts/inline.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Inline</p>
-                                                </a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a href="pages/charts/uplot.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>uPlot</p>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a href="#" className="nav-link">
-                                            <i className="nav-icon fas fa-tree" />
-                                            <p>
-                                                UI Elements
-                                                <i className="fas fa-angle-left right" />
-                                            </p>
-                                        </a>
-                                        <ul className="nav nav-treeview">
-                                            <li className="nav-item">
-                                                <a href="pages/UI/general.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>General</p>
-                                                </a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a href="pages/UI/icons.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Icons</p>
-                                                </a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a href="pages/UI/buttons.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Buttons</p>
-                                                </a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a href="pages/UI/sliders.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Sliders</p>
-                                                </a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a href="pages/UI/modals.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Modals &amp; Alerts</p>
-                                                </a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a href="pages/UI/navbar.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Navbar &amp; Tabs</p>
-                                                </a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a href="pages/UI/timeline.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Timeline</p>
-                                                </a>
-                                            </li>
-                                            <li className="nav-item">
-                                                <a href="pages/UI/ribbons.html" className="nav-link">
-                                                    <i className="far fa-circle nav-icon" />
-                                                    <p>Ribbons</p>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                        </Dropdown.Toggle>
+
+                                        <Dropdown.Menu variant="dark" style={{
+
+                                            backgroundColor: "#343a40",
+                                        }}>
+                                            <ul className="nav nav-treeview " style={{
+                                                display: "block",
+                                                backgroundColor: "#",
+                                            }}>
+                                                <li className="nav-item">
+                                                    <Link to="/General">
+                                                        <a href="pages/UI/general.html" className="nav-link">
+                                                            <i className="far fa-circle nav-icon" />
+                                                            <p>General</p>
+                                                        </a>
+                                                    </Link>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <a href="pages/UI/icons.html" className="nav-link">
+                                                        <i className="far fa-circle nav-icon" />
+                                                        <p>Icons</p>
+                                                    </a>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <Link to="/Button">
+                                                        <a href="pages/UI/buttons.html" className="nav-link">
+                                                            <i className="far fa-circle nav-icon" />
+                                                            <p>Buttons</p>
+                                                        </a>
+                                                    </Link>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <a href="pages/UI/sliders.html" className="nav-link">
+                                                        <i className="far fa-circle nav-icon" />
+                                                        <p>Sliders</p>
+                                                    </a>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <a href="pages/UI/modals.html" className="nav-link">
+                                                        <i className="far fa-circle nav-icon" />
+                                                        <p>Modals &amp; Alerts</p>
+                                                    </a>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <a href="pages/UI/navbar.html" className="nav-link">
+                                                        <i className="far fa-circle nav-icon" />
+                                                        <p>Navbar &amp; Tabs</p>
+                                                    </a>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <a href="pages/UI/timeline.html" className="nav-link">
+                                                        <i className="far fa-circle nav-icon" />
+                                                        <p>Timeline</p>
+                                                    </a>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <a href="pages/UI/ribbons.html" className="nav-link">
+                                                        <i className="far fa-circle nav-icon" />
+                                                        <p>Ribbons</p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </Dropdown.Menu>
+
+                                    </Dropdown>
                                     <li className="nav-item">
                                         <a href="#" className="nav-link">
                                             <i className="nav-icon fas fa-edit" />

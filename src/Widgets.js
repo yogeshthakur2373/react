@@ -1,17 +1,37 @@
 import React, { useEffect, useState } from "react";
 // import $ from 'jquery'
 
+import classNames from 'classnames'
+
 
 // import axios from 'axios'
 
 export default function Widgets() {
-    const [shadow, setShadow] = useState("")
+    const [shadow, setShadow] = useState("info-box");
+    // const [shado, setShado] = useState(false);
+    const [color, setColor] = useState("info-box bg-info");
+    const [color1, setColor1] = useState(false);
+    const [box, setBox] = useState("small-box bg-info");
 
-    const [color, setColor] = useState("")
 
-    const [over, setover] = useState("")
+    classNames('foo', 'bar');
 
-    const [abilities, setAbilities] = useState("")
+
+
+
+
+    // const onClickShadow = () => {
+    //     setShadow(!shadow)
+    // }
+
+
+    // const [color, setColor] = useState("")
+
+    // const [over, setover] = useState("")
+
+    // const [abilities, setAbilities] = useState("")
+
+    //
 
 
 
@@ -36,14 +56,14 @@ export default function Widgets() {
 
 
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const result = await fetch('http://localhost:4000/shadow')
-            const jsonResult = result.json();
-            setShadow(jsonResult)
-        }
-        fetchData()
-    }, [])
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const result = await fetch('http://localhost:4000/shadow')
+    //         const jsonResult = result.json();
+    //         setShadow(jsonResult)
+    //     }
+    //     fetchData()
+    // }, [])
 
 
 
@@ -52,14 +72,14 @@ export default function Widgets() {
 
 
 
-    const submitAuthour = async () => {
-        const myData = {
-            className: "info-box shadow-none"
+    // const submitAuthour = async () => {
+    //     const myData = {
+    //         className: "info-box shadow-none"
 
 
 
-        }
-    }
+    //     }
+    // }
 
 
 
@@ -209,38 +229,67 @@ export default function Widgets() {
 
                     <section className="content">
 
+                        {/* <div>
+                            <input type="radio" id="none" value="shadow" name="none" onClick={() => { setShadow() }} />
+                            <label for="none">none</label>
+                            <input type="radio" id="small" value="shadow" name="small" onClick={() => { setSmall(true) }} />
+                            <label for="none">small</label>
+                            <input type="radio" id="Ragular" value="shadow" name="ragular" onClick={() => { setSmall(false) }} />
+                            <label for="none">Regular</label>
+                            <input type="radio" id="large" value="shadow" name="large" onClick={() => { setShadow(true) }} />
+                            <label for="none">large</label>
+                        </div> */}
                         <div>
-                            <input type="radio" value="shadow" id="none"
-                                name="shadow" onClick={(e) => { setShadow(e.target.value)(document.getElementById("yogesh").className = "info-box shadow-none") }}
-                                onDoubleClick={() => { shadow(document.getElementById("yogesh").className = "info-box shadow-none") }} />
-                            <label for="none" type="submit">none</label>
-
+                            <input type="radio" id="html" name="fav_language" value="none" onClick={() => { setShadow("info-box shadow-none") }} />
+                            <label htmlFor="html">none</label>
+                            <input type="radio" id="css" name="fav_language" onClick={() => { setShadow("info-box shadow-sm") }} />
+                            <label htmlFor="css">Small</label>
+                            <input type="radio" id="javascript" name="fav_language" onClick={() => { setShadow("info-box shadow") }} />
+                            <label htmlFor="javascript">regular</label>
+                            <input type="radio" id="javascript" name="fav_language" onClick={() => { setShadow("info-box shadow-lg") }} />
+                            <label htmlFor="javascript" >large</label>
+                        </div>
+                        {/* <input action="../../post" method="post" type="radio" value="shadow" id="none"
+                                name="shadow" onClick={onClickShadow}
+                                onDoubleClick={ } /> */}
+                        {/* <label for="none" type="submit">none</label>
+                                   
                             <input type="radio" value="small" id="small"
-                                name="shadow" onClick={() => { setShadow(document.getElementById("yogesh").className = " info-box shadow-sm ") }}
-                                onDoubleClick={() => { shadow(document.getElementById("yogesh").className = "info-box shadow-none") }} />
+                                name="shadow" onClick={ }
+                                onDoubleClick={ } />
                             <label for="small">small</label>
                             <input type="radio" value="regular" id="regular"
-                                onChange={""} name="shadow" onClick={() => { setShadow(document.getElementById("yogesh").className = "info-box shadow") }
-
-                                }
-                                onDoubleClick={() => { shadow(document.getElementById("yogesh").className = "info-box shadow-none") }} />
+                                onChange={""} name="shadow" onClick={ }
+                                onDoubleClick={ } />
                             <label for="regular">regular</label>
                             <input type="radio" value="larger" id="large"
-                                onChange={""} name="shadow" onClick={() => { setShadow(document.getElementById("yogesh").className = "info-box shadow-lg") }}
-                                onDoubleClick={() => { shadow(document.getElementById("yogesh").className = "info-box shadow-none") }} />
-                            <label for="large">large</label>
+                                onChange={""} name="shadow" onClick={ }
+                                onDoubleClick={ } />
+                            <label for="large">large</label> */}
 
 
-                        </div>
+
+
+
+
+
+
+
+
+
+
+
                         <div className="container-fluid">
                             <h5 className="mb-2">Info Box</h5>
                             <div className="row">
                                 <div className="col-md-3 col-sm-6 col-12" >
-                                    <div className="info-box" id="yogesh">
+                                    <div className={shadow} id="yogesh" >
+
                                         <span className="info-box-icon bg-info"><i className="far fa-envelope" /></span>
                                         <div className="info-box-content">
                                             <span className="info-box-text">Messages</span>
                                             <span className="info-box-number">1,410</span>
+
 
                                         </div>
 
@@ -268,7 +317,7 @@ export default function Widgets() {
 
 
                             <h5 className="mt-4 mb-2" id="abhishek">Info Box With <code>bg-*</code></h5>
-                            <div>
+                            {/* <div>
 
                                 <input type="radio" value="none" id="none"
                                     name="shadow" onClick={() => { setColor(document.getElementById("blue").className = "info-box bg-gradient-info ") }} />
@@ -285,10 +334,21 @@ export default function Widgets() {
                                 <label for="large">light red</label>
 
 
+                            </div> */}
+                            <div>
+                                <input type="radio" id="html" name="fav_language" onClick={() => { setColor("info-box bg-info") }} />
+                                <label htmlFor="html">none</label>
+                                <input type="radio" id="css" name="fav_language" defaultValue="CSS" onClick={() => { setColor("info-box bg-success") }} />
+                                <label htmlFor="css">color2</label>
+                                <input type="radio" id="javascript" name="fav_language" onClick={() => { setColor("info-box bg-warning") }} />
+                                <label htmlFor="javascript">color3</label>
+                                <input type="radio" id="javascript" name="fav_language" onClick={() => { setColor("info-box bg-danger") }} />
+                                <label htmlFor="javascript" >color4</label>
                             </div>
+
                             <div className="row">
                                 <div className="col-md-3 col-sm-6 col-12" >
-                                    <div className="info-box bg-info" id="blue">
+                                    <div className={color} id="blue">
                                         <span className="info-box-icon" ><i className="far fa-bookmark" /></span>
                                         <div className="info-box-content">
                                             <span className="info-box-text">Bookmarks</span>
@@ -317,7 +377,21 @@ export default function Widgets() {
                             {/* =========================================================== */}
                             {/* Small Box (Stat card) */}
                             <h5 className="mb-2 mt-4">Small Box</h5>
+
+
                             <div>
+                                <input type="radio" id="html" name="fav_language" onClick={() => { setBox("small-box bg-info") }} />
+                                <label htmlFor="html">color1</label>
+                                <input type="radio" id="css" name="fav_language" defaultValue="CSS" onClick={() => { setBox("small-box bg-success") }} />
+                                <label htmlFor="css">color2</label>
+                                <input type="radio" id="javascript" name="fav_language" onClick={() => { setBox(" small-box bg-warning ") }} />
+                                <label htmlFor="javascript">color3</label>
+                                <input type="radio" id="javascript" name="fav_language" onClick={() => { setBox("small-box bg-danger") }} />
+                                <label htmlFor="javascript" >color4</label>
+                            </div>
+
+
+                            {/* <div>
 
                                 <input type="radio" value="none" id="none"
                                     name="shadow" onClick={""} />
@@ -330,11 +404,11 @@ export default function Widgets() {
                                     onChange={""} name="shadow" onClick={""} />
                                 <label for="regular">bounce rate</label>
 
-                            </div>
+                            </div> */}
                             <div className="row" >
                                 <div className="col-lg-3 col-6" id="overlay">
                                     {/* small card */}
-                                    <div className="small-box bg-info" >
+                                    <div className={box} >
                                         <div className="inner">
                                             <h3>150</h3>
                                             <p>New Orders</p>
@@ -404,7 +478,7 @@ export default function Widgets() {
 
 
 
-                            <div>
+                            {/* <div>
 
                                 <input type="radio" value="none" id="none"
                                     name="" onClick={() => { setAbilities(document.getElementById("cardd").className = "") }} />
@@ -423,7 +497,7 @@ export default function Widgets() {
 
                                 <label for="regular">Maximizable</label>
 
-                            </div>
+                            </div> */}
 
 
 
